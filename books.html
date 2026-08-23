@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Books — Aionios Life</title>
+  <meta name="description" content="Browse all books by this Nigerian Christian author — Bible-based books for adult believers seeking to grow in faith and understanding.">
+  <meta property="og:title" content="Books — Aionios Life">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER / NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <div class="nav-links" role="list">
+        <a href="index.html"   class="nav-link page-link" role="listitem">Home</a>
+        <a href="books.html"   class="nav-link active page-link" role="listitem" aria-current="page">Books</a>
+        <a href="blog.html"    class="nav-link page-link" role="listitem">Blog</a>
+        <a href="about.html"   class="nav-link page-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link page-link" role="listitem">Contact</a>
+      </div>
+      <a href="books.html" class="btn btn-primary nav-cta page-link" aria-current="page">Shop Books</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="navToggle">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </nav>
+    <nav class="nav-mobile-menu closed" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+      <ul class="nav-mobile-links">
+        <li><a href="index.html"   class="nav-mobile-link page-link">Home</a></li>
+        <li><a href="books.html"   class="nav-mobile-link active page-link" aria-current="page">Books</a></li>
+        <li><a href="blog.html"    class="nav-mobile-link page-link">Blog</a></li>
+        <li><a href="about.html"   class="nav-mobile-link page-link">About</a></li>
+        <li><a href="contact.html" class="nav-mobile-link page-link">Contact</a></li>
+      </ul>
+      <div class="nav-mobile-cta">
+        <a href="books.html" class="btn btn-orange btn-block page-link">Shop Books</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+
+    <!-- ── PAGE HERO ────────────────────────────────────────── -->
+    <section class="page-hero" aria-labelledby="booksPageTitle">
+      <div class="page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html" class="page-link">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Books</span>
+        </nav>
+        <h1 class="page-hero-title" id="booksPageTitle">All Books</h1>
+        <p class="page-hero-desc">Every title by Aionios Life — deep Bible teaching for adults who want to grow in faith and the knowledge of God's Word.</p>
+      </div>
+    </section>
+
+    <!-- ── FILTER BAR ─────────────────────────────────────── -->
+    <!-- JS: clicking a .filter-btn sets it active and filters .book-card elements by data-category -->
+    <div class="filter-bar" role="navigation" aria-label="Filter books by category">
+      <div class="filter-inner">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <!-- CHILDREN FILTER BUTTON — hidden per author request; restore when ready
+        <button class="filter-btn" data-filter="children" aria-pressed="false">Children's Books</button>
+        -->
+      </div>
+    </div>
+
+    <!-- ── CHRISTIAN BOOKS (ADULTS) ───────────────────────── -->
+    <section class="books-section" id="adult-books" aria-labelledby="adultBooksLabel">
+      <h2 class="books-section-label" id="adultBooksLabel">Christian Books — Adults</h2>
+      <div class="books-grid">
+
+        <!-- In Him Realities -->
+        <a href="book-detail.html?slug=in-him-realities" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/in him realities.jpeg" alt="Book cover: In Him Realities" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">In Him Realities</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,500</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Redemption Realities -->
+        <a href="book-detail.html?slug=redemption-realities" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/redemption realities.jpeg" alt="Book cover: Redemption Realities" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Redemption Realities</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,200</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Spiritual Warfare -->
+        <a href="book-detail.html?slug=spiritual-warfare" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/Spiritual warfare.jpeg" alt="Book cover: Spiritual Warfare" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Spiritual Warfare</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,500</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Ainos Soteria -->
+        <a href="book-detail.html?slug=ainos-soteria" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/Ainos soteria.jpeg" alt="Book cover: Ainos Soteria" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Ainos Soteria</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Christ Our Substitute -->
+        <a href="book-detail.html?slug=christ-our-substitute" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/Christ our substitude.jpeg" alt="Book cover: Christ Our Substitute" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Christ Our Substitute</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Free Yet Bound -->
+        <a href="book-detail.html?slug=free-yet-bound" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/Free yet bound.jpeg" alt="Book cover: Free Yet Bound" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Free Yet Bound</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- God's Mind Towards You -->
+        <a href="book-detail.html?slug=gods-mind-towards-you" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/God's mind towards you.jpeg" alt="Book cover: God's Mind Towards You" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">God's Mind Towards You</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Homologia -->
+        <a href="book-detail.html?slug=homologia" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/Homologia.jpeg" alt="Book cover: Homologia" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Homologia</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- The Gospel Is Not Stop Sinning -->
+        <a href="book-detail.html?slug=the-gospel-is-not-stop-sinning" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/The gospel is not stop sinning.jpeg" alt="Book cover: The Gospel Is Not Stop Sinning" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">The Gospel Is Not Stop Sinning</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- They Shall Never Perish -->
+        <a href="book-detail.html?slug=they-shall-never-perish" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/They shall never perish.jpeg" alt="Book cover: They Shall Never Perish" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">They Shall Never Perish</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- What Is Salvation? -->
+        <a href="book-detail.html?slug=what-is-salvation" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/What is salvation.jpeg" alt="Book cover: What Is Salvation?" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">What Is Salvation?</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,500</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Exposing Sin -->
+        <a href="book-detail.html?slug=exposing-sin" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/exposing sin.jpeg" alt="Book cover: Exposing Sin" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Exposing Sin</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Intertwined -->
+        <a href="book-detail.html?slug=intertwined" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/intertwined.jpeg" alt="Book cover: Intertwined" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Intertwined</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Loving God -->
+        <a href="book-detail.html?slug=loving-god" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/loving God.jpeg" alt="Book cover: Loving God" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Loving God</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Most Excellent Name -->
+        <a href="book-detail.html?slug=most-excellent-name" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/most excellent name.jpeg" alt="Book cover: Most Excellent Name" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Most Excellent Name</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Open My Eye -->
+        <a href="book-detail.html?slug=open-my-eye" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/open my eye.jpeg" alt="Book cover: Open My Eye" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Open My Eye</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Read the Bible Right -->
+        <a href="book-detail.html?slug=read-the-bible-right" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/read the bible right.jpeg" alt="Book cover: Read the Bible Right" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Read the Bible Right</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- The God Life -->
+        <a href="book-detail.html?slug=the-god-life" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/the God life.jpeg" alt="Book cover: The God Life" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">The God Life</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Abba's Invitation -->
+        <a href="book-detail.html?slug=abbas-invitation" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/Abba's invitation.jpeg" alt="Book cover: Abba's Invitation" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Abba's Invitation</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Adelphos -->
+        <a href="book-detail.html?slug=adelphos" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/adelphos.jpeg" alt="Book cover: Adelphos" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Adelphos</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Mind of Christ -->
+        <a href="book-detail.html?slug=mind-of-christ" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/mind of christ.jpeg" alt="Book cover: Mind of Christ" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Mind of Christ</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- New Creation Man -->
+        <a href="book-detail.html?slug=new-creation-man" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/new creation man.jpeg" alt="Book cover: New Creation Man" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">New Creation Man</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦3,000</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Salvation Simply Put -->
+        <a href="book-detail.html?slug=salvation-simply-put" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/salvation simply put.jpeg" alt="Book cover: Salvation Simply Put" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Salvation Simply Put</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,500</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Sonship Realities -->
+        <a href="book-detail.html?slug=sonship-realities" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/sonship realities.jpeg" alt="Book cover: Sonship Realities" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Sonship Realities</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Angels Are My Buddies -->
+        <a href="book-detail.html?slug=angels-are-my-buddies" class="book-card reveal-child page-link" data-category="adult">
+          <div class="book-card-cover">
+            <img src="images/Angels are my buddies.jpeg" alt="Book cover: Angels Are My Buddies" loading="lazy">
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--adult">Adult</span>
+            <h3 class="book-card-title">Angels Are My Buddies</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,800</span>
+              <span class="book-card-buy">View</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- CHILDREN'S BOOKS SECTION — hidden per author request; restore when ready
+    <section class="books-section" id="childrens-books" aria-labelledby="childrensBooksLabel">
+      <h2 class="books-section-label" id="childrensBooksLabel">Children's Books</h2>
+      <div class="books-grid">
+
+        <a href="book-detail.html?slug=bible-tales-for-little-hearts" class="book-card reveal-child page-link" data-category="children">
+          <div class="book-card-cover">
+            <div class="book-cover-placeholder" style="background-color: #2a4a2e;">
+              <div class="book-cover-placeholder-title" style="color: #c8e6c9;">Bible Tales for Little Hearts</div>
+            </div>
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--children">Children</span>
+            <h3 class="book-card-title">Bible Tales for Little Hearts</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,000</span>
+              <a href="book-detail.html?slug=bible-tales-for-little-hearts" class="book-card-buy page-link" aria-label="View Bible Tales for Little Hearts">View</a>
+            </div>
+          </div>
+        </a>
+
+        <a href="book-detail.html?slug=gods-big-promise" class="book-card reveal-child page-link" data-category="children">
+          <div class="book-card-cover">
+            <div class="book-cover-placeholder" style="background-color: #c05e1e;">
+              <div class="book-cover-placeholder-title" style="color: #fff8f0;">God's Big Promise</div>
+            </div>
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--children">Children</span>
+            <h3 class="book-card-title">God's Big Promise</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,200</span>
+              <a href="book-detail.html?slug=gods-big-promise" class="book-card-buy page-link" aria-label="View God's Big Promise">View</a>
+            </div>
+          </div>
+        </a>
+
+        <a href="book-detail.html?slug=the-shepherds-song" class="book-card reveal-child page-link" data-category="children">
+          <div class="book-card-cover">
+            <div class="book-cover-placeholder" style="background-color: #4a6741;">
+              <div class="book-cover-placeholder-title" style="color: #e8f5e9;">The Shepherd's Song</div>
+            </div>
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--children">Children</span>
+            <h3 class="book-card-title">The Shepherd's Song</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,000</span>
+              <a href="book-detail.html?slug=the-shepherds-song" class="book-card-buy page-link" aria-label="View The Shepherd's Song">View</a>
+            </div>
+          </div>
+        </a>
+
+        <a href="book-detail.html?slug=noah-and-the-great-flood" class="book-card reveal-child page-link" data-category="children">
+          <div class="book-card-cover">
+            <div class="book-cover-placeholder" style="background-color: #2c4a6b;">
+              <div class="book-cover-placeholder-title" style="color: #e0f0ff;">Noah and the Great Flood</div>
+            </div>
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--children">Children</span>
+            <h3 class="book-card-title">Noah and the Great Flood</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,200</span>
+              <a href="book-detail.html?slug=noah-and-the-great-flood" class="book-card-buy page-link" aria-label="View Noah and the Great Flood">View</a>
+            </div>
+          </div>
+        </a>
+
+        <a href="book-detail.html?slug=david-and-the-giant" class="book-card reveal-child page-link" data-category="children">
+          <div class="book-card-cover">
+            <div class="book-cover-placeholder" style="background-color: #8b2020;">
+              <div class="book-cover-placeholder-title" style="color: #fdecd7;">David and the Giant</div>
+            </div>
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--children">Children</span>
+            <h3 class="book-card-title">David and the Giant</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,000</span>
+              <a href="book-detail.html?slug=david-and-the-giant" class="book-card-buy page-link" aria-label="View David and the Giant">View</a>
+            </div>
+          </div>
+        </a>
+
+        <a href="book-detail.html?slug=the-miracles-of-jesus" class="book-card reveal-child page-link" data-category="children">
+          <div class="book-card-cover">
+            <div class="book-cover-placeholder" style="background-color: #6b4a00;">
+              <div class="book-cover-placeholder-title" style="color: #fff3cd;">The Miracles of Jesus</div>
+            </div>
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-genre book-card-genre--children">Children</span>
+            <h3 class="book-card-title">The Miracles of Jesus</h3>
+            <div class="book-card-footer">
+              <span class="book-card-price">₦2,500</span>
+              <a href="book-detail.html?slug=the-miracles-of-jesus" class="book-card-buy page-link" aria-label="View The Miracles of Jesus">View</a>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+    -->
+
+    <!-- ── NEWSLETTER ────────────────────────────────────────── -->
+    <section class="newsletter reveal" aria-labelledby="newsletterTitle">
+      <div class="newsletter-inner">
+        <span class="newsletter-icon" aria-hidden="true">📚</span>
+        <h2 class="newsletter-title" id="newsletterTitle">Be first to know about new releases</h2>
+        <p class="newsletter-desc">Subscribe and get book release announcements, exclusive excerpts, and free devotionals delivered to your inbox.</p>
+        <form class="newsletter-form" action="#mailchimp-action" method="post" id="newsletterForm" novalidate>
+          <label for="newsletterEmail" class="sr-only">Your email address</label>
+          <input type="email" id="newsletterEmail" name="EMAIL" class="newsletter-input" placeholder="Your email address" required aria-required="true">
+          <button type="submit" class="btn btn-orange">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="books.html"   class="footer-link page-link">Books</a>
+        <a href="blog.html"    class="footer-link page-link">Blog</a>
+        <a href="about.html"   class="footer-link page-link">About</a>
+        <a href="contact.html" class="footer-link page-link">Contact</a>
+      </nav>
+      <hr class="footer-divider">
+      <p class="footer-copy">© 2026 Aionios Life. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/book-filter.js" defer></script>
+
+</body>
+</html>

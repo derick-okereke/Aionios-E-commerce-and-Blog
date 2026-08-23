@@ -1,0 +1,251 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap');
+  .s2 * { box-sizing: border-box; margin: 0; padding: 0; }
+  .s2 { font-family: 'Nunito', sans-serif; background: #fff8f0; color: #1e1408; }
+  .s2-concept-bar { background: #e07b39; padding: 8px 36px; display: flex; justify-content: space-between; align-items: center; }
+  .s2-concept-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #fff8f0; font-weight: 600; }
+  .s2-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 36px; background: #fff8f0; border-bottom: 1px solid #f0dfc8; }
+  .s2-logo { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: #1e1408; display: flex; align-items: center; gap: 8px; }
+  .s2-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: #e07b39; }
+  .s2-navlinks { display: flex; gap: 24px; }
+  .s2-navlinks span { font-size: 13px; font-weight: 400; color: #6b4f2e; cursor: pointer; }
+  .s2-navlinks span.active { color: #1e1408; font-weight: 600; }
+  .s2-cta-nav { font-size: 12px; font-weight: 700; background: #e07b39; color: white; padding: 9px 20px; border-radius: 24px; cursor: pointer; }
+  .s2-hero { padding: 0 36px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center; min-height: 360px; background: #fff8f0; }
+  .s2-hero-left { padding: 40px 0; }
+  .s2-tag { display: inline-flex; align-items: center; gap: 6px; background: #fdecd7; border: 1px solid #f0dfc8; color: #c05e1e; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 5px 12px; border-radius: 20px; margin-bottom: 20px; }
+  .s2-h1 { font-family: 'Lora', serif; font-size: 36px; line-height: 1.22; color: #1e1408; font-weight: 600; margin-bottom: 14px; }
+  .s2-h1 span { color: #e07b39; font-style: italic; }
+  .s2-sub { font-size: 14px; line-height: 1.75; color: #6b4f2e; font-weight: 300; max-width: 380px; margin-bottom: 28px; }
+  .s2-btns { display: flex; gap: 12px; align-items: center; }
+  .s2-btn1 { background: #1e1408; color: white; font-size: 13px; font-weight: 700; padding: 12px 26px; border-radius: 24px; cursor: pointer; }
+  .s2-btn2 { background: transparent; color: #e07b39; font-size: 13px; font-weight: 700; padding: 12px 26px; border-radius: 24px; border: 2px solid #e07b39; cursor: pointer; }
+  .s2-hero-right { display: flex; align-items: center; justify-content: center; padding: 32px 0; }
+  .s2-hero-visual { position: relative; width: 280px; height: 300px; }
+  .s2-hbook { position: absolute; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; }
+  .s2-hbook-title { font-family: 'Lora', serif; font-size: 9px; text-align: center; line-height: 1.3; }
+  .s2-hbook-badge { font-size: 8px; margin-top: 4px; background: rgba(255,255,255,0.25); border-radius: 10px; padding: 2px 6px; font-weight: 700; }
+  .s2-stats { display: flex; gap: 24px; margin-top: 28px; }
+  .s2-stat { }
+  .s2-stat-num { font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: #1e1408; }
+  .s2-stat-label { font-size: 11px; color: #6b4f2e; font-weight: 400; }
+  .s2-wave { height: 5px; background: linear-gradient(90deg, #e07b39 0%, #f0a060 50%, #fdecd7 100%); }
+  .s2-categories { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .s2-cat { padding: 32px 36px; display: flex; align-items: center; gap: 20px; cursor: pointer; border-bottom: 1px solid #f0dfc8; }
+  .s2-cat:nth-child(odd) { border-right: 1px solid #f0dfc8; }
+  .s2-cat-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .s2-cat-title { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #1e1408; margin-bottom: 4px; }
+  .s2-cat-desc { font-size: 12px; color: #6b4f2e; line-height: 1.5; font-weight: 300; margin-bottom: 8px; }
+  .s2-cat-link { font-size: 11.5px; font-weight: 700; color: #e07b39; }
+  .s2-books { padding: 40px 36px; background: #fdf4ea; }
+  .s2-sh { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; }
+  .s2-sh-title { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: #1e1408; }
+  .s2-sh-link { font-size: 12px; font-weight: 700; color: #e07b39; }
+  .s2-brow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .s2-bc { background: white; border-radius: 14px; overflow: hidden; border: 1px solid #f0dfc8; cursor: pointer; }
+  .s2-bc-cover { width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
+  .s2-bc-body { padding: 12px; }
+  .s2-bc-tag { font-size: 9.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .s2-bc-name { font-family: 'Lora', serif; font-size: 12.5px; font-weight: 600; color: #1e1408; margin-bottom: 6px; line-height: 1.3; }
+  .s2-bc-footer { display: flex; justify-content: space-between; align-items: center; }
+  .s2-bc-price { font-size: 12px; font-weight: 700; color: #1e1408; }
+  .s2-bc-buy { font-size: 10px; font-weight: 700; background: #e07b39; color: white; padding: 4px 10px; border-radius: 12px; }
+  .s2-quote { background: #1e1408; padding: 40px 36px; text-align: center; }
+  .s2-quote-marks { font-family: 'Lora', serif; font-size: 48px; color: #e07b39; line-height: 0.7; margin-bottom: 12px; }
+  .s2-quote-text { font-family: 'Lora', serif; font-size: 17px; font-style: italic; color: #fdecd7; line-height: 1.7; max-width: 520px; margin: 0 auto 12px; }
+  .s2-quote-ref { font-size: 11px; letter-spacing: 1px; color: #e07b39; text-transform: uppercase; font-weight: 700; }
+  .s2-blog { padding: 40px 36px; }
+  .s2-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+  .s2-ba { background: white; border-radius: 14px; border: 1px solid #f0dfc8; overflow: hidden; cursor: pointer; }
+  .s2-ba-top { height: 100px; display: flex; align-items: center; justify-content: center; }
+  .s2-ba-body { padding: 14px; }
+  .s2-ba-tag { display: inline-block; font-size: 9.5px; font-weight: 700; padding: 3px 8px; border-radius: 10px; margin-bottom: 8px; }
+  .s2-ba-title { font-family: 'Lora', serif; font-size: 13px; font-weight: 600; color: #1e1408; line-height: 1.4; margin-bottom: 8px; }
+  .s2-ba-meta { font-size: 10px; color: #6b4f2e; }
+  .s2-nl { margin: 0 36px 40px; background: #fdecd7; border-radius: 18px; padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid #f0c898; }
+  .s2-nl-left { }
+  .s2-nl-title { font-family: 'Lora', serif; font-size: 18px; font-weight: 600; color: #1e1408; margin-bottom: 6px; }
+  .s2-nl-desc { font-size: 12.5px; color: #6b4f2e; font-weight: 300; }
+  .s2-nl-right { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .s2-nl-input { border: 1.5px solid #f0c898; background: white; border-radius: 24px; padding: 10px 16px; font-size: 12.5px; font-family: 'Nunito', sans-serif; color: #1e1408; width: 200px; outline: none; }
+  .s2-nl-btn { background: #e07b39; color: white; font-size: 12.5px; font-weight: 700; padding: 10px 20px; border-radius: 24px; cursor: pointer; white-space: nowrap; }
+  .s2-footer { background: #1e1408; padding: 24px 36px; display: flex; justify-content: space-between; align-items: center; }
+  .s2-footer-logo { font-family: 'Lora', serif; font-size: 14px; color: white; }
+  .s2-footer-links { display: flex; gap: 18px; }
+  .s2-footer-links span { font-size: 11px; color: #c0956a; cursor: pointer; }
+  .s2-footer-copy { font-size: 10px; color: #6b4f2e; }
+</style>
+
+<div class="s2">
+  <div class="s2-concept-bar">
+    <span class="s2-concept-label">Concept 2 — "The Garden" — Warm, Rounded &amp; Welcoming</span>
+    <span class="s2-concept-label">Cream · Burnt Orange · Deep Brown</span>
+  </div>
+
+  <div class="s2-nav">
+    <div class="s2-logo"><div class="s2-logo-dot"></div>Emmanuel Writes</div>
+    <div class="s2-navlinks">
+      <span class="active">Home</span>
+      <span>Books</span>
+      <span>Blog</span>
+      <span>About</span>
+      <span>Contact</span>
+    </div>
+    <div class="s2-cta-nav">Shop Books</div>
+  </div>
+
+  <div class="s2-hero">
+    <div class="s2-hero-left">
+      <div class="s2-tag">✦ Christian Author · Bible Teacher</div>
+      <div class="s2-h1">Bible truths that<br>speak to <span>every heart</span><br>at every age.</div>
+      <div class="s2-sub">Books that bring adults closer to God's Word, and give children their first love of Scripture. Written with clarity, faith, and warmth.</div>
+      <div class="s2-btns">
+        <div class="s2-btn1">Browse Books</div>
+        <div class="s2-btn2">Read Blog</div>
+      </div>
+      <div class="s2-stats">
+        <div class="s2-stat"><div class="s2-stat-num">12+</div><div class="s2-stat-label">Published titles</div></div>
+        <div class="s2-stat"><div class="s2-stat-num">2</div><div class="s2-stat-label">Book categories</div></div>
+        <div class="s2-stat"><div class="s2-stat-num">100+</div><div class="s2-stat-label">Blog articles</div></div>
+      </div>
+    </div>
+    <div class="s2-hero-right">
+      <div class="s2-hero-visual">
+        <div class="s2-hbook" style="width:110px;height:155px;background:#2a4a2e;left:0;top:20px;transform:rotate(-5deg);">
+          <div class="s2-hbook-title" style="color:#c8e6c9;">Bible Tales<br>for Little Hearts</div>
+          <div class="s2-hbook-badge" style="color:#c8e6c9;">Children</div>
+        </div>
+        <div class="s2-hbook" style="width:118px;height:168px;background:#1e1408;left:80px;top:0;z-index:2;">
+          <div class="s2-hbook-title" style="color:#f0c898;font-size:10px;">The Living Word</div>
+          <div class="s2-hbook-badge" style="color:#f0c898;">Adult</div>
+        </div>
+        <div class="s2-hbook" style="width:100px;height:142px;background:#c05e1e;left:160px;top:30px;transform:rotate(4deg);">
+          <div class="s2-hbook-title" style="color:#fff8f0;">God's Big<br>Promise</div>
+          <div class="s2-hbook-badge" style="color:#fff8f0;">Children</div>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;text-align:center;font-family:'Lora',serif;font-size:11px;font-style:italic;color:#6b4f2e;">4 books shown of 12+ available</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s2-wave"></div>
+
+  <div class="s2-categories">
+    <div class="s2-cat">
+      <div class="s2-cat-icon" style="background:#fdecd7;">📖</div>
+      <div>
+        <div class="s2-cat-title">Christian Books</div>
+        <div class="s2-cat-desc">Deep, clear explorations of Bible truth for adults seeking to grow in faith and understanding.</div>
+        <div class="s2-cat-link">Explore Adult Books →</div>
+      </div>
+    </div>
+    <div class="s2-cat">
+      <div class="s2-cat-icon" style="background:#e8f5e9;">🌟</div>
+      <div>
+        <div class="s2-cat-title">Children's Books</div>
+        <div class="s2-cat-desc">Bright, simple stories that help children aged 3–10 encounter God's Word in a way they understand.</div>
+        <div class="s2-cat-link">Explore Children's Books →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s2-books">
+    <div class="s2-sh">
+      <div class="s2-sh-title">Latest Releases</div>
+      <div class="s2-sh-link">See all books →</div>
+    </div>
+    <div class="s2-brow">
+      <div class="s2-bc">
+        <div class="s2-bc-cover" style="background:#1e1408;"></div>
+        <div class="s2-bc-body">
+          <div class="s2-bc-tag" style="color:#c05e1e;">Adult</div>
+          <div class="s2-bc-name">The Living Word</div>
+          <div class="s2-bc-footer"><span class="s2-bc-price">₦3,500</span><span class="s2-bc-buy">Buy</span></div>
+        </div>
+      </div>
+      <div class="s2-bc">
+        <div class="s2-bc-cover" style="background:#7a5c38;"></div>
+        <div class="s2-bc-body">
+          <div class="s2-bc-tag" style="color:#c05e1e;">Adult</div>
+          <div class="s2-bc-name">In His Light: 30 Days</div>
+          <div class="s2-bc-footer"><span class="s2-bc-price">₦2,800</span><span class="s2-bc-buy">Buy</span></div>
+        </div>
+      </div>
+      <div class="s2-bc">
+        <div class="s2-bc-cover" style="background:#2a4a2e;"></div>
+        <div class="s2-bc-body">
+          <div class="s2-bc-tag" style="color:#2a4a2e;">Children</div>
+          <div class="s2-bc-name">Bible Tales for Little Hearts</div>
+          <div class="s2-bc-footer"><span class="s2-bc-price">₦2,000</span><span class="s2-bc-buy">Buy</span></div>
+        </div>
+      </div>
+      <div class="s2-bc">
+        <div class="s2-bc-cover" style="background:#c05e1e;"></div>
+        <div class="s2-bc-body">
+          <div class="s2-bc-tag" style="color:#2a4a2e;">Children</div>
+          <div class="s2-bc-name">God's Big Promise</div>
+          <div class="s2-bc-footer"><span class="s2-bc-price">₦2,200</span><span class="s2-bc-buy">Buy</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s2-quote">
+    <div class="s2-quote-marks">"</div>
+    <div class="s2-quote-text">Your word is a lamp to my feet and a light to my path.</div>
+    <div class="s2-quote-ref">Psalm 119:105</div>
+  </div>
+
+  <div class="s2-blog">
+    <div class="s2-sh">
+      <div class="s2-sh-title">From the Blog</div>
+      <div class="s2-sh-link">All articles →</div>
+    </div>
+    <div class="s2-blog-grid">
+      <div class="s2-ba">
+        <div class="s2-ba-top" style="background:#fdecd7;"></div>
+        <div class="s2-ba-body">
+          <div class="s2-ba-tag" style="background:#fdecd7;color:#c05e1e;">Bible Study</div>
+          <div class="s2-ba-title">What Jesus Really Meant by "The Kingdom of God is Within You"</div>
+          <div class="s2-ba-meta">June 14 · 6 min read</div>
+        </div>
+      </div>
+      <div class="s2-ba">
+        <div class="s2-ba-top" style="background:#e8f5e9;"></div>
+        <div class="s2-ba-body">
+          <div class="s2-ba-tag" style="background:#e8f5e9;color:#2a4a2e;">For Parents</div>
+          <div class="s2-ba-title">How to Introduce Young Children to Bible Stories</div>
+          <div class="s2-ba-meta">May 30 · 4 min read</div>
+        </div>
+      </div>
+      <div class="s2-ba">
+        <div class="s2-ba-top" style="background:#f0e8d8;"></div>
+        <div class="s2-ba-body">
+          <div class="s2-ba-tag" style="background:#fdecd7;color:#c05e1e;">Devotional</div>
+          <div class="s2-ba-title">Finding Rest When Life Won't Slow Down</div>
+          <div class="s2-ba-meta">June 8 · 5 min read</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s2-nl">
+    <div class="s2-nl-left">
+      <div class="s2-nl-title">Stay connected to the Word</div>
+      <div class="s2-nl-desc">Get new articles, book releases, and free devotionals — straight to your inbox.</div>
+    </div>
+    <div class="s2-nl-right">
+      <input class="s2-nl-input" placeholder="Your email address" />
+      <div class="s2-nl-btn">Subscribe</div>
+    </div>
+  </div>
+
+  <div class="s2-footer">
+    <div class="s2-footer-logo">Emmanuel Writes</div>
+    <div class="s2-footer-links">
+      <span>Books</span><span>Blog</span><span>About</span><span>Contact</span>
+    </div>
+    <div class="s2-footer-copy">© 2026 Emmanuel</div>
+  </div>
+</div>

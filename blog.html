@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Bible Teachings, Devotionals &amp; Reflections | Aionios Life</title>
+  <meta name="description" content="Read Bible study articles, devotionals, faith encouragements, and parenting tips for raising children in God's Word — from Aionios Life.">
+  <meta property="og:title" content="Blog — Aionios Life">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER / NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <div class="nav-links" role="list">
+        <a href="index.html"   class="nav-link page-link" role="listitem">Home</a>
+        <a href="books.html"   class="nav-link page-link" role="listitem">Books</a>
+        <a href="blog.html"    class="nav-link active page-link" role="listitem" aria-current="page">Blog</a>
+        <a href="about.html"   class="nav-link page-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link page-link" role="listitem">Contact</a>
+      </div>
+      <a href="books.html" class="btn btn-primary nav-cta page-link">Shop Books</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="navToggle">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </nav>
+    <nav class="nav-mobile-menu closed" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+      <ul class="nav-mobile-links">
+        <li><a href="index.html"   class="nav-mobile-link page-link">Home</a></li>
+        <li><a href="books.html"   class="nav-mobile-link page-link">Books</a></li>
+        <li><a href="blog.html"    class="nav-mobile-link active page-link">Blog</a></li>
+        <li><a href="about.html"   class="nav-mobile-link page-link">About</a></li>
+        <li><a href="contact.html" class="nav-mobile-link page-link">Contact</a></li>
+      </ul>
+      <div class="nav-mobile-cta">
+        <a href="books.html" class="btn btn-orange btn-block page-link">Shop Books</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+
+    <!-- ── PAGE HERO ────────────────────────────────────────── -->
+    <section class="page-hero" aria-labelledby="blogPageTitle">
+      <div class="page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html" class="page-link">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Blog</span>
+        </nav>
+        <h1 class="page-hero-title" id="blogPageTitle">Blog</h1>
+        <p class="page-hero-desc">Bible teachings, exergertic study, and reflections — to help you grow deeper in God's Word.</p>
+      </div>
+    </section>
+
+    <!-- ── FILTER BAR ─────────────────────────────────────── -->
+    <!-- Hidden for now — tags not in use. Restore when categories are needed.
+    <div class="filter-bar" role="navigation" aria-label="Filter articles by topic">
+      <div class="filter-inner">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="bible-study" aria-pressed="false">Bible Study</button>
+        <button class="filter-btn" data-filter="devotional" aria-pressed="false">Devotional</button>
+        <button class="filter-btn" data-filter="parents" aria-pressed="false">For Parents</button>
+        <button class="filter-btn" data-filter="faith" aria-pressed="false">Faith</button>
+      </div>
+    </div>
+    -->
+
+    <!-- ── ARTICLES CONTAINER ─────────────────────────────── -->
+    <!--
+      HASHNODE INTEGRATION NOTE FOR JS DEVELOPER:
+      ============================================
+      These placeholder cards show exactly what HTML structure JS should generate
+      when populating from the Hashnode API (GraphQL endpoint).
+
+      Each generated .article-card must have:
+        - data-tag="[tag-slug]" for filter targeting
+        - class="article-card reveal-child page-link"
+        - href="article.html?slug=[hashnode-slug]"
+        - The same inner HTML structure as shown below
+
+      Suggested GraphQL query fields:
+        title, brief, slug, publishedAt, readTimeInMinutes, tags { name, slug }, coverImage { url }
+    -->
+    <section class="section-pad" aria-labelledby="blogArticlesTitle">
+      <div class="container">
+
+        <!-- Featured article (first / most recent) -->
+        <h2 class="sr-only" id="blogArticlesTitle">Blog Articles</h2>
+
+        <a
+          href="#"
+          class="featured-article reveal page-link"
+          style="display: none;"
+          aria-label="Featured article"
+        >
+          <div class="featured-article-image" aria-hidden="true"></div>
+          <div class="featured-article-body">
+            <h3 class="featured-article-title"></h3>
+            <p class="featured-article-excerpt"></p>
+            <p class="featured-article-meta"></p>
+          </div>
+        </a>
+
+        <!-- Articles grid -->
+        <div class="articles-grid articles-grid--3col" id="articlesGrid">
+        </div>
+
+        </div>
+        <!-- END #articlesGrid — JS appends more cards here on "Load More" -->
+
+      </div>
+    </section>
+
+    <!-- ── LOAD MORE ─────────────────────────────────────── -->
+    <!--
+      JS: .load-more-btn click should fetch the next page of articles from
+      Hashnode API and append new .article-card elements to #articlesGrid.
+      Hide this button when no more articles are available.
+    -->
+    <div class="blog-load-more">
+      <button class="btn btn-outline-dark load-more-btn" id="loadMoreBtn" aria-label="Load more articles">
+        Load More Articles
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="books.html"   class="footer-link page-link">Books</a>
+        <a href="blog.html"    class="footer-link page-link">Blog</a>
+        <a href="about.html"   class="footer-link page-link">About</a>
+        <a href="contact.html" class="footer-link page-link">Contact</a>
+      </nav>
+      <hr class="footer-divider">
+      <p class="footer-copy">© 2026 Aionios Life. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/blog.js" defer></script>
+
+</body>
+</html>

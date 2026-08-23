@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    TEMPLATE PAGE — ARCHITECTURE NOTE FOR JS DEVELOPER:
+    ====================================================
+    This is a single reusable template populated dynamically via JavaScript.
+
+    On page load, JS should:
+    1. Read the slug from URL params: const slug = new URLSearchParams(location.search).get('slug')
+    2. Find the matching book object in /js/books.js (a JS data array you will create)
+    3. Populate all elements marked [data-book-field="fieldName"]
+    4. Set the document title and meta description dynamically
+
+    Example URL: book-detail.html?slug=in-him-realities
+    Example books.js entry:
+    {
+      slug: "in-him-realities",
+      title: "In Him: Realities",
+      author: "Aionios Life",
+      genre: "adult",
+      price: "₦3,500",
+      priceRaw: 3500,
+      cover: "images/in him realities.jpeg",
+      description: ["Paragraph 1...", "Paragraph 2..."],
+      excerpt: "Excerpt text...",
+      selarUrl: "https://selar.co/your-link-here"
+    }
+  -->
+  <title>Book Title — Aionios Life</title>
+  <meta name="description" content="Read a detailed description and excerpt. Purchase directly or via Selar.">
+  <meta property="og:type" content="book">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER / NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <div class="nav-links" role="list">
+        <a href="index.html"   class="nav-link page-link" role="listitem">Home</a>
+        <a href="books.html"   class="nav-link active page-link" role="listitem" aria-current="page">Books</a>
+        <a href="blog.html"    class="nav-link page-link" role="listitem">Blog</a>
+        <a href="about.html"   class="nav-link page-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link page-link" role="listitem">Contact</a>
+      </div>
+      <a href="books.html" class="btn btn-primary nav-cta page-link">Shop Books</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="navToggle">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </nav>
+    <nav class="nav-mobile-menu closed" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+      <ul class="nav-mobile-links">
+        <li><a href="index.html"   class="nav-mobile-link page-link">Home</a></li>
+        <li><a href="books.html"   class="nav-mobile-link active page-link">Books</a></li>
+        <li><a href="blog.html"    class="nav-mobile-link page-link">Blog</a></li>
+        <li><a href="about.html"   class="nav-mobile-link page-link">About</a></li>
+        <li><a href="contact.html" class="nav-mobile-link page-link">Contact</a></li>
+      </ul>
+      <div class="nav-mobile-cta">
+        <a href="books.html" class="btn btn-orange btn-block page-link">Shop Books</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+
+    <!-- Breadcrumb -->
+    <div class="page-hero page-hero--compact">
+      <div class="page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html" class="page-link">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="books.html" class="page-link">Books</a>
+          <span aria-hidden="true">›</span>
+          <!-- JS: populate with book title -->
+          <span data-book-field="title" aria-current="page">Book Title</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ── BOOK DETAIL HERO ──────────────────────────────── -->
+    <section class="book-detail-wrap" aria-labelledby="bookDetailTitle">
+
+      <!-- LEFT: Cover image column -->
+      <div class="book-detail-cover-col">
+        <div class="book-detail-cover" id="bookDetailCoverWrap">
+          <!-- src left blank — book-detail.js sets it from books.js data
+               Hidden until JS populates it to avoid a flash of the wrong image -->
+          <img
+            src=""
+            alt=""
+            data-book-field="coverImg"
+            id="bookDetailCoverImg"
+            loading="eager"
+            style="display:none;"
+          >
+        </div>
+        <!-- Selar buy button — JS sets href from books.js data -->
+        <a
+          href="#selar-link"
+          class="btn btn-outline-dark book-detail-cover-link"
+          data-book-field="selarUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Buy this book on Selar"
+        >
+          Buy on Selar ↗
+        </a>
+      </div>
+
+      <!-- RIGHT: Book info column -->
+      <div class="book-detail-info">
+        <!-- JS: set class to book-detail-genre--adult or book-detail-genre--children -->
+        <p class="book-detail-genre book-detail-genre--adult" data-book-field="genreLabel">Adult · Christian</p>
+
+        <h1 class="book-detail-title" id="bookDetailTitle" data-book-field="title">
+          In Him: Realities
+        </h1>
+
+        <p class="book-detail-author" data-book-field="author">By Oku Andy</p>
+
+        <!-- JS: update this price -->
+        <div class="book-price" data-book-field="price">₦3,500</div>
+
+        <div class="book-detail-desc">
+          <!-- JS: populate from books.js description array -->
+          <p>In Him Reality unveils the believer's co-inclusion with Christ, revealing the shared life and inseparable union established through His death, burial, resurrection, and exaltation.</p>
+          <p>It opens your eyes to what it truly means to be in Christ, helping you understand your identity, inheritance, and every redemptive blessing that is yours because of your union with Him.</p>
+        </div>
+
+        <div class="book-detail-btns">
+          <!--
+            JS hook: the .buy-now-btn click handler opens the .purchase-modal.
+            JS should also inject the current book title and price into the modal
+            before opening it.
+          -->
+          <button
+            class="btn btn-orange buy-now-btn"
+            id="buyNowBtn"
+            data-book-title="In Him: Realities"
+            data-book-price="₦3,500"
+            aria-haspopup="dialog"
+          >
+            Buy Now — ₦3,500
+          </button>
+          <a
+            href="#selar-link"
+            class="btn btn-outline-dark"
+            data-book-field="selarUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Buy on Selar ↗
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── EXCERPT ───────────────────────────────────────── -->
+    <section class="book-excerpt reveal" aria-labelledby="excerptTitle">
+      <div class="book-excerpt-inner">
+        <h2 class="book-excerpt-title" id="excerptTitle">Read an Excerpt</h2>
+        <!-- JS: populate from books.js excerpt field -->
+        <blockquote>
+          <p>"Before you could do anything — before you could pray enough, believe enough, or behave enough — God made you complete in Him. This is not a destination you are travelling toward. It is a reality you woke up inside of, the moment you said yes to Jesus."</p>
+        </blockquote>
+        <blockquote>
+          <p>"Your identity is not built on your performance. It is anchored in His resurrection. You are not trying to become righteous. You are righteous — and learning to live from that truth."</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ── RELATED BOOKS ─────────────────────────────────── -->
+    <section class="related-section reveal" aria-labelledby="relatedBooksTitle">
+      <div class="related-section-inner">
+        <div class="section-header">
+          <h2 class="section-title" id="relatedBooksTitle">You May Also Like</h2>
+          <a href="books.html" class="section-link page-link">All Books →</a>
+        </div>
+        <div class="books-grid">
+
+          <a href="book-detail.html?slug=redemption-realities" class="book-card reveal-child page-link" data-category="adult">
+            <div class="book-card-cover">
+              <img src="images/redemption realities.jpeg" alt="Book cover: Redemption Realities" loading="lazy">
+            </div>
+            <div class="book-card-body">
+              <span class="book-card-genre book-card-genre--adult">Adult</span>
+              <h3 class="book-card-title">Redemption Realities</h3>
+              <div class="book-card-footer">
+                <span class="book-card-price">₦3,200</span>
+                <span class="book-card-buy">View</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="book-detail.html?slug=spiritual-warfare" class="book-card reveal-child page-link" data-category="adult">
+            <div class="book-card-cover">
+              <img src="images/Spiritual warfare.jpeg" alt="Book cover: Spiritual Warfare" loading="lazy">
+            </div>
+            <div class="book-card-body">
+              <span class="book-card-genre book-card-genre--adult">Adult</span>
+              <h3 class="book-card-title">Spiritual Warfare</h3>
+              <div class="book-card-footer">
+                <span class="book-card-price">₦3,500</span>
+                <span class="book-card-buy">View</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="book-detail.html?slug=the-living-word" class="book-card reveal-child page-link" data-category="adult">
+            <div class="book-card-cover">
+              <div class="book-cover-placeholder" style="background-color: #1e1408;">
+                <div class="book-cover-placeholder-title" style="color: #f0c898;">The Living Word</div>
+              </div>
+            </div>
+            <div class="book-card-body">
+              <span class="book-card-genre book-card-genre--adult">Adult</span>
+              <h3 class="book-card-title">The Living Word</h3>
+              <div class="book-card-footer">
+                <span class="book-card-price">₦2,800</span>
+                <span class="book-card-buy">View</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       PURCHASE MODAL
+       JS: .buy-now-btn click → remove .hidden from .purchase-modal
+       JS: inject book title + price before opening
+       JS: .modal-close click → add .hidden back
+       ============================================================ -->
+  <div
+    class="purchase-modal hidden"
+    id="purchaseModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalBookTitle"
+  >
+    <div class="purchase-modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Close purchase dialog">✕</button>
+
+      <!-- Book info (JS populates data-book-field values) -->
+      <h2 class="modal-book-title" id="modalBookTitle" data-modal-field="title">In Him: Realities</h2>
+      <p class="modal-price" data-modal-field="price">₦3,500</p>
+
+      <!-- Step 1: Transfer instructions -->
+      <p class="modal-step">Step 1 — Transfer the exact amount to:</p>
+      <div class="bank-details">
+        <div class="bank-row">
+          <span class="bank-label">Bank</span>
+          <!-- PLACEHOLDER: replace with real bank name -->
+          <span class="bank-value">Zenith Bank</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Account Number</span>
+          <!-- PLACEHOLDER: replace with real account number -->
+          <span class="bank-value">0123456789</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Account Name</span>
+          <!-- PLACEHOLDER: replace with real account name -->
+          <span class="bank-value">Emmanuel Chukwu</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Amount</span>
+          <span class="bank-value" data-modal-field="price">₦3,500</span>
+        </div>
+      </div>
+
+      <!-- Step 2: Email input -->
+      <p class="modal-step">Step 2 — Enter your email to receive your download link:</p>
+      <label for="buyerEmail" class="modal-email-label">Your email address</label>
+      <input
+        type="email"
+        id="buyerEmail"
+        name="buyerEmail"
+        class="modal-email-input"
+        placeholder="you@example.com"
+        required
+        aria-required="true"
+        autocomplete="email"
+      >
+
+      <!--
+        JS: .confirm-transfer-btn click should:
+        1. Validate email input
+        2. POST to your Vercel serverless function (email notification endpoint)
+        3. Hide .purchase-modal, show .payment-confirmation
+      -->
+      <button
+        class="btn btn-orange confirm-transfer-btn"
+        id="confirmTransferBtn"
+        data-modal-field="title"
+        data-book-title="In Him: Realities"
+      >
+        I've Made the Transfer ✓
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PAYMENT CONFIRMATION
+       JS: shown after confirm-transfer-btn submit succeeds
+       ============================================================ -->
+  <div
+    class="payment-confirmation hidden"
+    id="paymentConfirmation"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="confirmationTitle"
+  >
+    <div class="payment-confirmation-card">
+      <span class="confirmation-icon" aria-hidden="true">✅</span>
+      <h2 class="confirmation-title" id="confirmationTitle">Thank you!</h2>
+      <p class="confirmation-message">
+        Once your payment is confirmed, your download link will be sent to your email — usually within a few hours.
+        <br><br>
+        We appreciate your patience and your support.
+      </p>
+      <a href="books.html" class="confirmation-link page-link">← Return to Books</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="books.html"   class="footer-link page-link">Books</a>
+        <a href="blog.html"    class="footer-link page-link">Blog</a>
+        <a href="about.html"   class="footer-link page-link">About</a>
+        <a href="contact.html" class="footer-link page-link">Contact</a>
+      </nav>
+      <hr class="footer-divider">
+      <p class="footer-copy">© 2026 Aionios Life. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/books.js" defer></script>
+  <script src="js/book-detail.js" defer></script>
+
+</body>
+</html>

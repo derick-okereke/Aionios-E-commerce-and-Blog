@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    TEMPLATE PAGE — ARCHITECTURE NOTE FOR JS DEVELOPER:
+    ====================================================
+    This is a single reusable template populated dynamically via JavaScript.
+
+    On page load, JS should:
+    1. Read the slug from URL: const slug = new URLSearchParams(location.search).get('slug')
+    2. Fetch the article from the Hashnode GraphQL API using the slug
+    3. Populate all elements with the correct content (title, body HTML, tags, date, etc.)
+    4. Set document.title and the meta description dynamically
+
+    Hashnode GraphQL API endpoint: https://gql.hashnode.com
+    Query: publication(host: "your-hashnode-username.hashnode.dev").post(slug: slug)
+    Fields: title, content { html }, brief, publishedAt, readTimeInMinutes, tags { name },
+            author { name, photo { url } }, coverImage { url }
+  -->
+  <title>Article Title — Aionios Life Blog</title>
+  <meta name="description" content="Read this article from the Aionios Life blog.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER / NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <div class="nav-links" role="list">
+        <a href="index.html"   class="nav-link page-link" role="listitem">Home</a>
+        <a href="books.html"   class="nav-link page-link" role="listitem">Books</a>
+        <a href="blog.html"    class="nav-link active page-link" role="listitem" aria-current="page">Blog</a>
+        <a href="about.html"   class="nav-link page-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link page-link" role="listitem">Contact</a>
+      </div>
+      <a href="books.html" class="btn btn-primary nav-cta page-link">Shop Books</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="navToggle">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </nav>
+    <nav class="nav-mobile-menu closed" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+      <ul class="nav-mobile-links">
+        <li><a href="index.html"   class="nav-mobile-link page-link">Home</a></li>
+        <li><a href="books.html"   class="nav-mobile-link page-link">Books</a></li>
+        <li><a href="blog.html"    class="nav-mobile-link active page-link">Blog</a></li>
+        <li><a href="about.html"   class="nav-mobile-link page-link">About</a></li>
+        <li><a href="contact.html" class="nav-mobile-link page-link">Contact</a></li>
+      </ul>
+      <div class="nav-mobile-cta">
+        <a href="books.html" class="btn btn-orange btn-block page-link">Shop Books</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+
+    <!-- ── SINGLE ARTICLE ────────────────────────────────────── -->
+    <article class="article-page" aria-labelledby="articleTitle">
+
+      <!-- Article header -->
+      <header class="article-header">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb breadcrumb--spaced" aria-label="Breadcrumb">
+          <a href="index.html" class="page-link">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="blog.html" class="page-link">Blog</a>
+          <span aria-hidden="true">›</span>
+          <!-- JS: populate with article title (truncated if long) -->
+          <span aria-current="page" data-article-field="breadcrumb">Article</span>
+        </nav>
+
+        <!-- Tag / category -->
+        <!-- JS: populate tag from article data -->
+        <span class="article-header-tag" data-article-field="tag">Bible Study</span>
+
+        <!-- Title -->
+        <h1 class="article-header-title" id="articleTitle" data-article-field="title">Loading…</h1>
+
+        <!-- Meta: date + read time -->
+        <div class="article-meta" aria-label="Article metadata">
+          <time datetime="" data-article-field="date"></time>
+          <span class="article-meta-dot" aria-hidden="true"></span>
+          <span data-article-field="readTime"></span>
+        </div>
+
+        <!-- Author row -->
+        <div class="article-author-row">
+          <div class="article-author-avatar" aria-hidden="true">
+          <img src="images/Author.jpeg" alt="Oku Andy">
+          </div>
+          <div>
+            <!-- JS: from post.author.name -->
+            <div class="article-author-name">Oku Andy</div>
+            <div class="article-author-role">Christian Author &amp; Bible Teacher</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Article body -->
+      <!--
+        JS: innerHTML of .article-body is replaced with post.content.html from Hashnode.
+        Hashnode returns clean HTML — headings become <h2>, <h3>; paragraphs become <p>;
+        blockquotes become <blockquote>. All of these are already styled in style.css.
+        The JS developer only needs: document.querySelector('.article-body').innerHTML = post.content.html
+      -->
+      <div class="article-body" id="articleBody" data-article-field="bodyHtml">
+
+        <p>
+          Luke 17:21 contains one of the most quoted — and perhaps most misunderstood — phrases in all of the Gospels. When the Pharisees demanded to know when the Kingdom of God would come, Jesus replied: <em>"The kingdom of God is not coming in ways that can be observed, nor will they say, 'Look, here it is!' or 'There!' For behold, the kingdom of God is in the midst of you."</em>
+        </p>
+
+        <p>
+          Over the centuries, this verse has been lifted out of context and used to justify all kinds of ideas — from mystical inwardness to pantheism to new-age spirituality. But what did Jesus actually mean? And what does it mean for you as a believer today?
+        </p>
+
+        <h2>The Context: Who Was Jesus Talking To?</h2>
+
+        <p>
+          The answer to the question begins with the audience. Jesus was speaking to <em>the Pharisees</em> — religious leaders who were hostile to him and his ministry. They did not believe in him. So it would make very little sense for Jesus to tell them that the Kingdom of God was somehow already living inside them.
+        </p>
+
+        <blockquote>
+          <p>"The kingdom of God is not coming with signs to be observed." — Luke 17:20</p>
+        </blockquote>
+
+        <h2>What Does "In Your Midst" Actually Mean?</h2>
+
+        <p>
+          The Greek phrase translated "within you" or "in the midst of you" is <em>entos hymōn</em>. While it <em>can</em> mean "within" in an interior sense, it also commonly means "in your midst" or "among you." Given the context — Jesus standing right in front of the Pharisees — the translation "in your midst" is almost certainly more accurate.
+        </p>
+
+        <p>
+          Jesus was saying: the King himself is standing here in front of you. The Kingdom is not something you watch for on the horizon. It has arrived — in the person of Jesus.
+        </p>
+
+        <h3>Implications for Believers Today</h3>
+
+        <p>
+          If the Kingdom of God arrived in Jesus, and Jesus now lives in you by his Spirit — then the Kingdom of God is <em>truly</em> within every believer. Not in the new-age, self-focused sense that this phrase is often used today, but in the profound sense that the King himself has taken up residence in your heart.
+        </p>
+
+        <p>
+          This means the Kingdom is not something you are waiting for from a distance. It is something you are already participating in. Every act of love, justice, truth-telling, and grace is an expression of the Kingdom breaking into the present world through you.
+        </p>
+
+      </div>
+
+    </article>
+
+    <!-- ── ARTICLE SHARE ─────────────────────────────────────── -->
+    <section class="article-share" aria-label="Share this article">
+      <div class="article-share-inner">
+        <span class="article-share-label">Share this article:</span>
+        <div class="article-share-btns">
+          <!--
+            JS: .share-btn--whatsapp click constructs WhatsApp share URL:
+            https://wa.me/?text=encodeURIComponent(articleTitle + ' - ' + window.location.href)
+          -->
+          <button class="share-btn share-btn--whatsapp" id="shareWhatsapp" aria-label="Share on WhatsApp">
+            📱 WhatsApp
+          </button>
+          <!--
+            JS: .share-btn--copy click copies window.location.href to clipboard
+            and briefly changes button text to "Copied!"
+          -->
+          <button class="share-btn share-btn--copy" id="shareCopyLink" aria-label="Copy article link to clipboard">
+            🔗 Copy Link
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RELATED ARTICLES ───────────────────────────────────── -->
+    <section class="related-section reveal" aria-labelledby="relatedArticlesTitle">
+      <div class="related-section-inner">
+        <div class="section-header">
+          <h2 class="section-title" id="relatedArticlesTitle">More Articles</h2>
+          <a href="blog.html" class="section-link page-link">All articles →</a>
+        </div>
+        <div class="articles-grid" id="relatedArticlesGrid">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BOOK PROMO (contextual CTA) ───────────────────────── -->
+    <section class="newsletter reveal" aria-labelledby="bookPromoTitle">
+      <div class="newsletter-inner">
+        <span class="newsletter-icon" aria-hidden="true">📖</span>
+        <h2 class="newsletter-title" id="bookPromoTitle">Want to go deeper?</h2>
+        <p class="newsletter-desc">These teachings are drawn from books available in the shop. If this article blessed you, the books will take you even further.</p>
+        <div class="newsletter-form">
+          <a href="books.html" class="btn btn-orange page-link">Browse All Books</a>
+          <a href="newsletter-signup" class="btn btn-outline-dark page-link">Subscribe to Blog</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo page-link" aria-label="Aionios Life — Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        Aionios Life
+      </a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="books.html"   class="footer-link page-link">Books</a>
+        <a href="blog.html"    class="footer-link page-link">Blog</a>
+        <a href="about.html"   class="footer-link page-link">About</a>
+        <a href="contact.html" class="footer-link page-link">Contact</a>
+      </nav>
+      <hr class="footer-divider">
+      <p class="footer-copy">© 2026 Aionios Life. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/article.js" defer></script>
+
+</body>
+</html>
