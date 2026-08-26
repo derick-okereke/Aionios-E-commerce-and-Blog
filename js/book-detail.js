@@ -182,7 +182,7 @@
 
   // ── 7. Update <title> and <meta name="description"> ─────────
 
-  document.title = `${book.title} — Aionios Life`;
+  document.title = `${book.title} — LOGOS HUB`;
 
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) {

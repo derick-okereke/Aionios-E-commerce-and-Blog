@@ -135,7 +135,7 @@
         const errEl      = document.createElement('p');
         errEl.id         = 'formError';
         errEl.role       = 'alert';
-        errEl.textContent = `Something went wrong: ${err.message}. Please try again, or email us directly at hello@aionioslife.com.`;
+        errEl.textContent = `Something went wrong: ${err.message}. Please try again, or email us directly at hello@logoshub.com.`;
         errEl.style.cssText = 'color:#c0392b; font-size:0.875rem; margin-top:0.75rem;';
         submitBtn.insertAdjacentElement('afterend', errEl);
       }

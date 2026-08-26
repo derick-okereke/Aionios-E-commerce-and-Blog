@@ -224,7 +224,7 @@
   function populateArticle(fields, includes) {
 
     // 1. <title> and meta description
-    document.title = `${fields.title} — Aionios Life Blog`;
+    document.title = `${fields.title} — LOGOS HUB Blog`;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute('content', (fields.excerpt ?? '').substring(0, 155));
@@ -273,7 +273,7 @@
     //    your Content Type and reference it here as fields.authorName.
     const authorNameEl = document.querySelector('[data-article-field="authorName"]');
     if (authorNameEl) {
-      authorNameEl.textContent = fields.authorName ?? 'Aionios Life';
+      authorNameEl.textContent = fields.authorName ?? 'LOGOS HUB';
     }
 
     // 8. Author avatar — if you add a "authorPhoto" Media field to your Content Type,

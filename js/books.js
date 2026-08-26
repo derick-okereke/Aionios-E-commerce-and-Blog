@@ -26,7 +26,7 @@ const BOOKS = [
   {
     slug:               'in-him-realities',
     title:              'In Him Realities',
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'adult',
     genreLabel:         'Adult · Christian',
     price:              '₦3,500',
@@ -50,7 +50,7 @@ const BOOKS = [
   {
     slug:               'redemption-realities',
     title:              'Redemption Realities',
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'adult',
     genreLabel:         'Adult · Christian',
     price:              '₦3,200',
@@ -74,7 +74,7 @@ const BOOKS = [
   {
     slug:               'spiritual-warfare',
     title:              'Spiritual Warfare',
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'adult',
     genreLabel:         'Adult · Christian',
     price:              '₦3,500',
@@ -603,7 +603,7 @@ const BOOKS = [
   {
     slug:               'bible-tales-for-little-hearts',
     title:              'Bible Tales for Little Hearts',
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'children',
     genreLabel:         "Children's · Ages 3–8",
     price:              '₦2,000',
@@ -627,7 +627,7 @@ const BOOKS = [
   {
     slug:               'gods-big-promise',
     title:              "God's Big Promise",
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'children',
     genreLabel:         "Children's · Ages 4–8",
     price:              '₦2,200',
@@ -651,7 +651,7 @@ const BOOKS = [
   {
     slug:               'the-shepherds-song',
     title:              "The Shepherd's Song",
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'children',
     genreLabel:         "Children's · Ages 3–7",
     price:              '₦2,000',
@@ -675,7 +675,7 @@ const BOOKS = [
   {
     slug:               'noah-and-the-great-flood',
     title:              'Noah and the Great Flood',
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'children',
     genreLabel:         "Children's · Ages 5–9",
     price:              '₦2,200',
@@ -699,7 +699,7 @@ const BOOKS = [
   {
     slug:               'david-and-the-giant',
     title:              'David and the Giant',
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'children',
     genreLabel:         "Children's · Ages 5–10",
     price:              '₦2,000',
@@ -723,7 +723,7 @@ const BOOKS = [
   {
     slug:               'the-miracles-of-jesus',
     title:              'The Miracles of Jesus',
-    author:             'Aionios Life',
+    author:             'LOGOS HUB',
     genre:              'children',
     genreLabel:         "Children's · Ages 5–10",
     price:              '₦2,500',

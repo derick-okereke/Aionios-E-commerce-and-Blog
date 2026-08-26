@@ -1,12 +1,75 @@
 /* =============================================================
-   home.js — Homepage blog preview renderer
+   home.js — Homepage dynamic content renderer
    Runs only on index.html.
-   Fetches top 3 latest published articles from Contentful.
+
+   1. Latest Releases — reads BOOKS (from books.js), sorts by
+      publishedAt descending, renders the top 3 adult books.
+      Adding a new book with a fresh publishedAt date automatically
+      bumps it into this section and pushes the oldest one out.
+
+   2. Blog Preview — fetches top 3 latest posts from Contentful.
    ============================================================= */
 
 (function () {
   'use strict';
 
+  // ── 1. LATEST RELEASES ───────────────────────────────────────
+  function renderLatestReleases() {
+    const grid = document.getElementById('latestReleasesGrid');
+    if (!grid) return;
+
+    // BOOKS is defined in books.js (loaded before this script)
+    if (typeof BOOKS === 'undefined' || !Array.isArray(BOOKS)) return;
+
+    // Filter to adult books with a publishedAt date, then sort newest first
+    const sorted = BOOKS
+      .filter(b => b.genre === 'adult' && b.publishedAt)
+      .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+    const latest = sorted.slice(0, 3);
+
+    grid.innerHTML = '';
+
+    latest.forEach(book => {
+      const coverHtml = book.cover
+        ? `<img src="${book.cover}" alt="${book.coverAlt || ''}" loading="eager">`
+        : `<div class="book-cover-placeholder"
+                style="background-color:${book.coverPlaceholderBg || '#1a1a2e'};">
+             <div class="book-cover-placeholder-title"
+                  style="color:${book.coverPlaceholderColor || '#fff'};">
+               ${book.title}
+             </div>
+           </div>`;
+
+      const card = document.createElement('a');
+      card.href      = `book-detail.html?slug=${book.slug}`;
+      card.className = 'book-card reveal-child page-link';
+      card.setAttribute('data-category', book.genre);
+      card.innerHTML = `
+        <div class="book-card-cover">${coverHtml}</div>
+        <div class="book-card-body">
+          <span class="book-card-genre book-card-genre--adult">Adult</span>
+          <h3 class="book-card-title">${book.title}</h3>
+          <div class="book-card-footer">
+            <span class="book-card-price">${book.price}</span>
+            <span class="book-card-buy">View</span>
+          </div>
+        </div>`;
+
+      grid.appendChild(card);
+
+      // Hook into the reveal observer if available
+      if (window.revealObserver) {
+        window.revealObserver.observe(card);
+      } else {
+        card.classList.add('is-revealed');
+      }
+    });
+  }
+
+  renderLatestReleases();
+
+  // ── 2. BLOG PREVIEW ─────────────────────────────────────────
   const CONTENTFUL_SPACE_ID     = 'gplqn5xuzqhx';
   const CONTENTFUL_ACCESS_TOKEN = 'CAOanbYtUsvyzxdIJbygr4i1YVSbaOl-w6BUpk23WLI';
   const CONTENT_TYPE_ID         = 'blogPost';
