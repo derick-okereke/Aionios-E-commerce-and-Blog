@@ -31,7 +31,7 @@ export default async function handler(req, res) {
   }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const AUTHOR_EMAIL   = process.env.AUTHOR_EMAIL;   // e.g. dpriestoku@gmail.com
+  const AUTHOR_EMAIL   = process.env.AUTHOR_EMAIL;   // e.g. dpriestoku@gmail.com, developer@example.com
   const FROM_EMAIL     = process.env.FROM_EMAIL;     // e.g. noreply@logoshub.com (verified domain)
 
   if (!RESEND_API_KEY || !AUTHOR_EMAIL || !FROM_EMAIL) {
@@ -39,10 +39,13 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
+  // Split emails by comma so multiple recipients can receive notifications
+  const toEmails = AUTHOR_EMAIL.split(',').map(email => email.trim());
+
   // Build the notification email to the author
   const emailPayload = {
     from: `LOGOS HUB <${FROM_EMAIL}>`,
-    to:   [AUTHOR_EMAIL],
+    to:   toEmails,
     subject: `📚 New Book Purchase — ${bookTitle}`,
     html: `
       <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto; padding: 24px; border: 1px solid #e5e7eb; border-radius: 8px;">
