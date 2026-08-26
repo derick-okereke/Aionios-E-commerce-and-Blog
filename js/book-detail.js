@@ -284,7 +284,10 @@
         })
       });
 
-      if (!response.ok) throw new Error('Server responded with an error');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Server responded with an error');
+      }
 
       // ── Success ──
       // Hide the modal and show the confirmation screen.
@@ -304,14 +307,17 @@
       confirmBtn.disabled    = false;
       confirmBtn.textContent = "I've Made the Transfer ✓";
 
-      // Only insert the error message once
-      if (!document.getElementById('modalError')) {
-        const errMsg      = document.createElement('p');
-        errMsg.id         = 'modalError';
-        errMsg.textContent = 'Something went wrong. Please try again, or email us directly.';
-        errMsg.style.cssText = 'color:#c0392b; font-size:0.85rem; margin-top:0.75rem;';
-        confirmBtn.insertAdjacentElement('afterend', errMsg);
+      // Remove any existing error message first to prevent duplicates
+      const existingError = document.getElementById('modalError');
+      if (existingError) {
+        existingError.remove();
       }
+
+      const errMsg      = document.createElement('p');
+      errMsg.id         = 'modalError';
+      errMsg.textContent = `Something went wrong: ${err.message}. Please try again, or email us directly at dpriestoku@gmail.com.`;
+      errMsg.style.cssText = 'color:#c0392b; font-size:0.85rem; margin-top:0.75rem;';
+      confirmBtn.insertAdjacentElement('afterend', errMsg);
     }
   });
 
