@@ -21,12 +21,18 @@
     // BOOKS is defined in books.js (loaded before this script)
     if (typeof BOOKS === 'undefined' || !Array.isArray(BOOKS)) return;
 
-    // Filter to adult books with a publishedAt date, then sort newest first
-    const sorted = BOOKS
-      .filter(b => b.genre === 'adult' && b.publishedAt)
-      .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    // Filter to adult books, sort by publishedAt if present (newest first),
+    // otherwise use the last 3 in the array (most recently added = bottom of books.js).
+    const adultBooks = BOOKS.filter(b => b.genre === 'adult');
 
-    const latest = sorted.slice(0, 3);
+    const sorted = adultBooks.some(b => b.publishedAt)
+      ? adultBooks
+          .filter(b => b.publishedAt)
+          .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+      : adultBooks;
+
+    // slice(-3) takes the last 3 entries — the most recently added books
+    const latest = sorted.slice(-3).reverse();
 
     grid.innerHTML = '';
 
@@ -48,7 +54,6 @@
       card.innerHTML = `
         <div class="book-card-cover">${coverHtml}</div>
         <div class="book-card-body">
-          <span class="book-card-genre book-card-genre--adult">Adult</span>
           <h3 class="book-card-title">${book.title}</h3>
           <div class="book-card-footer">
             <span class="book-card-price">${book.price}</span>

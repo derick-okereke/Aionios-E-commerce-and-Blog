@@ -288,6 +288,19 @@ p {
   color: var(--color-cream);
 }
 
+/* WhatsApp community CTA — uses brand green */
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #fff;
+  border-color: #25D366;
+}
+.btn-whatsapp:hover {
+  background-color: #1ebe57;
+  border-color: #1ebe57;
+  color: #fff;
+  box-shadow: 0 4px 22px rgba(37, 211, 102, 0.38);
+}
+
 /* ============================================================
    Site Header & Navigation
    ============================================================ */

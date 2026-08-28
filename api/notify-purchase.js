@@ -97,7 +97,8 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
       console.error('Resend error:', err);
-      return res.status(502).json({ error: 'Failed to send notification email' });
+      const message = err?.message || 'Failed to send notification email';
+      return res.status(502).json({ error: `Resend error: ${message}` });
     }
 
     return res.status(200).json({ success: true });

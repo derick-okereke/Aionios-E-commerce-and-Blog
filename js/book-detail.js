@@ -59,7 +59,6 @@
 
       case 'genreLabel':
         el.textContent = book.genreLabel;
-        // Swap the genre CSS modifier class to match the book's genre
         el.className = `book-detail-genre book-detail-genre--${book.genre}`;
         break;
 
@@ -80,11 +79,6 @@
             </div>`;
           el.replaceWith(placeholder);
         }
-        break;
-
-      case 'selarUrl':
-        // There may be two Selar links on the page (cover col + info col)
-        el.href = book.selarUrl;
         break;
     }
   });
@@ -123,9 +117,15 @@
 
   const buyNowBtn = document.getElementById('buyNowBtn');
   if (buyNowBtn) {
-    buyNowBtn.textContent     = `Buy Now — ${book.price}`;
+    buyNowBtn.textContent       = `Buy Now — ${book.price}`;
     buyNowBtn.dataset.bookTitle = book.title;
     buyNowBtn.dataset.bookPrice = book.price;
+  }
+
+  // Update the cover Buy Now button text to match
+  const buyNowBtnCover = document.getElementById('buyNowBtnCover');
+  if (buyNowBtnCover) {
+    buyNowBtnCover.textContent = `Buy Now — ${book.price}`;
   }
 
   // ── 6. Populate the related books grid ─────────────────────
@@ -160,9 +160,6 @@
       card.innerHTML = `
         <div class="book-card-cover">${coverHtml}</div>
         <div class="book-card-body">
-          <span class="book-card-genre book-card-genre--${rel.genre}">
-            ${rel.genre === 'adult' ? 'Adult' : 'Children'}
-          </span>
           <h3 class="book-card-title">${rel.title}</h3>
           <div class="book-card-footer">
             <span class="book-card-price">${rel.price}</span>
@@ -228,8 +225,9 @@
     buyNowBtn?.focus(); // return focus to the "Buy Now" button
   }
 
-  // Open modal when "Buy Now" is clicked
+  // Open modal when either "Buy Now" button is clicked
   buyNowBtn?.addEventListener('click', openModal);
+  document.getElementById('buyNowBtnCover')?.addEventListener('click', openModal);
 
   // Close modal via the ✕ button
   modalClose?.addEventListener('click', closeModal);

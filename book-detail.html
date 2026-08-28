@@ -30,7 +30,7 @@
     }
   -->
   <title>Book Title — LOGOS HUB</title>
-  <meta name="description" content="Read a detailed description and excerpt. Purchase directly or via Selar.">
+  <meta name="description" content="Read a detailed description and excerpt. Purchase your copy directly or listen to audio messages on Telegram.">
   <meta property="og:type" content="book">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,23 +111,19 @@
             style="display:none;"
           >
         </div>
-        <!-- Selar buy button — JS sets href from books.js data -->
-        <a
-          href="#selar-link"
-          class="btn btn-outline-dark book-detail-cover-link"
-          data-book-field="selarUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Buy this book on Selar"
+        <!-- Buy Now button — mirrors the one in the info column for mobile visibility -->
+        <button
+          class="btn btn-orange book-detail-cover-link"
+          id="buyNowBtnCover"
+          aria-haspopup="dialog"
         >
-          Buy on Selar ↗
-        </a>
+          Buy Now — ₦4,500
+        </button>
       </div>
 
       <!-- RIGHT: Book info column -->
       <div class="book-detail-info">
         <!-- JS: set class to book-detail-genre--adult or book-detail-genre--children -->
-        <p class="book-detail-genre book-detail-genre--adult" data-book-field="genreLabel">Adult · Christian</p>
 
         <h1 class="book-detail-title" id="bookDetailTitle" data-book-field="title">
           In Him: Realities
@@ -160,13 +156,14 @@
             Buy Now — ₦3,500
           </button>
           <a
-            href="#selar-link"
+            href="https://t.me/+zhaDxVaj7DFmZjc0"
             class="btn btn-outline-dark"
-            data-book-field="selarUrl"
+            id="audioMessagesBtn"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Listen to audio messages on Telegram"
           >
-            Buy on Selar ↗
+            🎧 Audio Messages
           </a>
         </div>
       </div>
@@ -201,10 +198,9 @@
               <img src="images/redemption realities.jpeg" alt="Book cover: Redemption Realities" loading="lazy">
             </div>
             <div class="book-card-body">
-              <span class="book-card-genre book-card-genre--adult">Adult</span>
               <h3 class="book-card-title">Redemption Realities</h3>
               <div class="book-card-footer">
-                <span class="book-card-price">₦3,200</span>
+                <span class="book-card-price">&#x20A6;4,500</span>
                 <span class="book-card-buy">View</span>
               </div>
             </div>
@@ -215,10 +211,9 @@
               <img src="images/Spiritual warfare.jpeg" alt="Book cover: Spiritual Warfare" loading="lazy">
             </div>
             <div class="book-card-body">
-              <span class="book-card-genre book-card-genre--adult">Adult</span>
               <h3 class="book-card-title">Spiritual Warfare</h3>
               <div class="book-card-footer">
-                <span class="book-card-price">₦3,500</span>
+                <span class="book-card-price">&#x20A6;4,500</span>
                 <span class="book-card-buy">View</span>
               </div>
             </div>
@@ -231,10 +226,9 @@
               </div>
             </div>
             <div class="book-card-body">
-              <span class="book-card-genre book-card-genre--adult">Adult</span>
               <h3 class="book-card-title">The Living Word</h3>
               <div class="book-card-footer">
-                <span class="book-card-price">₦2,800</span>
+                <span class="book-card-price">&#x20A6;4,500</span>
                 <span class="book-card-buy">View</span>
               </div>
             </div>
@@ -371,3 +365,4 @@
 
 </body>
 </html>
+
