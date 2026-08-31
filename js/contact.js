@@ -121,7 +121,9 @@
 
       // ── Success ──────────────────────────────────────────
       // Hide the form and show the confirmation message.
+      form.style.display = 'none';
       form.classList.add('hidden');
+      successMsg.style.display = 'block';
       successMsg.classList.remove('hidden');
 
       // Move focus into the success block so screen readers
