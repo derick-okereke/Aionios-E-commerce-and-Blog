@@ -95,19 +95,27 @@
     submitBtn.textContent = 'Sending…';
 
     try {
-      // Formspree accepts a standard FormData object.
-      // The `Accept: application/json` header tells Formspree
-      // to respond with JSON instead of redirecting the page.
+      const payload = {
+        name:    nameInput.value.trim(),
+        email:   emailInput.value.trim(),
+        subject: subjectInput.value.trim(),
+        message: messageInput.value.trim()
+      };
+
+      const isGoogleScript = form.action.includes('script.google.com');
+
       const res = await fetch(form.action, {
-        method:  'POST',
-        headers: { 'Accept': 'application/json' },
-        body:    new FormData(form)
+        method:   'POST',
+        headers:  isGoogleScript
+          ? { 'Content-Type': 'text/plain;charset=utf-8' }
+          : { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body:     JSON.stringify(payload),
+        redirect: 'follow'
       });
 
-      if (!res.ok) {
-        // Formspree returns structured errors in the JSON body
+      if (!res.ok && res.type !== 'opaque') {
         const data = await res.json().catch(() => ({}));
-        const msg  = data?.errors?.[0]?.message ?? 'Submission failed';
+        const msg  = data?.error ?? 'Submission failed';
         throw new Error(msg);
       }
 
@@ -131,14 +139,15 @@
 
       // Show an inline error message below the submit button
       // (only insert it once — avoid duplicates on repeated errors)
-      if (!document.getElementById('formError')) {
-        const errEl      = document.createElement('p');
+      let errEl = document.getElementById('formError');
+      if (!errEl) {
+        errEl            = document.createElement('p');
         errEl.id         = 'formError';
         errEl.role       = 'alert';
-        errEl.textContent = `Something went wrong: ${err.message}. Please try again, or email us directly at hello@logoshub.com.`;
         errEl.style.cssText = 'color:#c0392b; font-size:0.875rem; margin-top:0.75rem;';
         submitBtn.insertAdjacentElement('afterend', errEl);
       }
+      errEl.textContent = `Something went wrong: ${err.message}. Please try again, or email directly at dpriestoku@gmail.com.`;
     }
   });
 
