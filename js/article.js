@@ -37,8 +37,9 @@
   // ── CDA base URL ────────────────────────────────────────────
   const CDA_BASE = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries`;
 
-  // ── Read the slug from the URL ──────────────────────────────
-  const slug = new URLSearchParams(window.location.search).get('slug');
+  // ── Read and trim the slug from the URL ─────────────────────
+  const rawSlug = new URLSearchParams(window.location.search).get('slug');
+  const slug    = rawSlug ? rawSlug.trim() : null;
 
   // If there is no slug at all, redirect to the blog listing page.
   if (!slug) {
@@ -47,13 +48,10 @@
   }
 
   // ── Build the fetch URL ────────────────────────────────────
-  // Fetch the single blogPost entry whose slug field matches.
-  // include=2 resolves linked assets nested inside the Rich Text body
-  // (e.g. embedded images), as well as the top-level coverImage.
-  function buildFetchUrl() {
+  function buildFetchUrl(targetSlug = slug) {
     const params = new URLSearchParams({
       content_type:        CONTENT_TYPE_ID,
-      'fields.slug':       slug,
+      'fields.slug':       targetSlug,
       include:             2,
       access_token:        CONTENTFUL_ACCESS_TOKEN
     });
@@ -184,15 +182,35 @@
     if (titleEl) titleEl.textContent = 'Loading…';
 
     try {
-      const res = await fetch(buildFetchUrl(), {
+      let res = await fetch(buildFetchUrl(slug), {
         headers: { 'Accept': 'application/json' }
       });
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      const data = await res.json();
+      let data = await res.json();
 
-      // data.items[0] is the matching blogPost entry (filtered by slug)
+      // If exact slug match returns no items (e.g. if stored with trailing space in Contentful),
+      // perform a fallback search across entries and match trimmed slugs.
+      if (!data.items || data.items.length === 0) {
+        const fallbackParams = new URLSearchParams({
+          content_type: CONTENT_TYPE_ID,
+          include:      2,
+          limit:        100,
+          access_token: CONTENTFUL_ACCESS_TOKEN
+        });
+        const fallbackRes = await fetch(`${CDA_BASE}?${fallbackParams.toString()}`);
+        if (fallbackRes.ok) {
+          const fallbackData = await fallbackRes.json();
+          const match = (fallbackData.items ?? []).find(item =>
+            (item.fields?.slug ?? '').trim() === slug
+          );
+          if (match) {
+            data = { items: [match], includes: fallbackData.includes };
+          }
+        }
+      }
+
       if (!data.items || data.items.length === 0) {
         showError('This article could not be found.');
         return;
@@ -340,8 +358,9 @@
         const readTimePart = entry.fields.readTime ? ` · ${entry.fields.readTime} min read` : '';
         const imageHtml = coverUrl ? `<img src="${coverUrl}" alt="" loading="lazy">` : '';
 
+        const cleanSlug = encodeURIComponent((entry.fields.slug || '').trim());
         const card = document.createElement('a');
-        card.href = `article.html?slug=${entry.fields.slug}`;
+        card.href = `article.html?slug=${cleanSlug}`;
         card.className = 'article-card reveal-child page-link';
         card.innerHTML = `
           <div class="article-card-image" aria-hidden="true">${imageHtml}</div>

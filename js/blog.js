@@ -209,7 +209,8 @@
       : '';
     const readTimePart = fields.readTime ? ` · ${fields.readTime} min read` : '';
 
-    featuredCard.href = `article.html?slug=${fields.slug}`;
+    const cleanSlug = encodeURIComponent((fields.slug || '').trim());
+    featuredCard.href = `article.html?slug=${cleanSlug}`;
     featuredCard.setAttribute('aria-label', `Featured article: ${fields.title}`);
 
     const imageEl = featuredCard.querySelector('.featured-article-image');
@@ -249,8 +250,9 @@
       ? `<img src="${coverUrl}" alt="" loading="lazy">`
       : '';
 
+    const cleanSlug = encodeURIComponent((fields.slug || '').trim());
     const card     = document.createElement('a');
-    card.href      = `article.html?slug=${fields.slug}`;
+    card.href      = `article.html?slug=${cleanSlug}`;
     card.className = 'article-card reveal-child page-link';
 
     card.innerHTML = `

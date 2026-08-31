@@ -122,8 +122,9 @@
         const readTimePart = entry.fields.readTime ? ` · ${entry.fields.readTime} min read` : '';
         const imageHtml = coverUrl ? `<img src="${coverUrl}" alt="" loading="lazy">` : '';
 
+        const cleanSlug = encodeURIComponent((entry.fields.slug || '').trim());
         const card = document.createElement('a');
-        card.href = `article.html?slug=${entry.fields.slug}`;
+        card.href = `article.html?slug=${cleanSlug}`;
         card.className = 'article-card reveal-child page-link';
         card.innerHTML = `
           <div class="article-card-image" aria-hidden="true">${imageHtml}</div>
